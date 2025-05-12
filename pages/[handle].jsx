@@ -198,7 +198,7 @@ const ProfilePage = () => {
               style={{ color: theme.accent }}
               className="text-sm text-semibold text-center w lg:text-lg"
             >
-              © 2024{' '}
+              © 2025{' '}
               <Link
                 className="font-semibold"
                 target="_blank"
