@@ -17,7 +17,7 @@ import Head from 'next/head';
 
 const ProfilePage = () => {
   const router = useRouter();
-  const { query } = route;
+  const { query } = router;
   const { handle } = query;
 
   // HYPEFEST yönlendirmesi
