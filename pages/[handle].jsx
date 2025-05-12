@@ -17,12 +17,12 @@ import Head from 'next/head';
 
 const ProfilePage = () => {
   const router = useRouter();
-  const { query } = router;
+  const { query } = route;
   const { handle } = query;
 
   // HYPEFEST yönlendirmesi
   useEffect(() => {
-    if (handle === '@hypefest') {
+    if (handle === 'hypefest') {
       router.replace('https://fest.hypme.tr');
     }
   }, [handle, router]);
