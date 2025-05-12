@@ -16,8 +16,16 @@ import { SocialCards } from '@/components/core/user-profile/social-cards';
 import Head from 'next/head';
 
 const ProfilePage = () => {
-  const { query } = useRouter();
+  const router = useRouter();
+  const { query } = router;
   const { handle } = query;
+
+  // HYPEFEST yönlendirmesi
+  useEffect(() => {
+    if (handle === '@hypefest') {
+      router.replace('https://fest.hypme.tr');
+    }
+  }, [handle, router]);
 
   const {
     data: fetchedUser,
@@ -119,25 +127,25 @@ const ProfilePage = () => {
               />
             </div>
           )}
-		{handle !== '@hypefest' && (
-		  <Avatar.Root
-		    className="inline-flex h-[70px] w-[70px] border-2 border-blue-300
-		    items-center justify-center overflow-hidden rounded-full align-middle lg:w-[96px] lg:h-[96px]"
-		  >
-		    <Avatar.Image
-		      className="h-full w-full rounded-[inherit] object-cover"
-		      src={fetchedUser && fetchedUser?.image}
-		      referrerPolicy="no-referrer"
-		      alt="avatar"
-		    />
-		    <Avatar.Fallback
-		      className="leading-1 flex h-full w-full items-center justify-center bg-white text-[15px] font-medium"
-		      delayMs={100}
-		    >
-		      @
-		    </Avatar.Fallback>
-		  </Avatar.Root>
-		)}
+          {handle !== '@hypefest' && (
+            <Avatar.Root
+              className="inline-flex h-[70px] w-[70px] border-2 border-blue-300
+              items-center justify-center overflow-hidden rounded-full align-middle lg:w-[96px] lg:h-[96px]"
+            >
+              <Avatar.Image
+                className="h-full w-full rounded-[inherit] object-cover"
+                src={fetchedUser && fetchedUser?.image}
+                referrerPolicy="no-referrer"
+                alt="avatar"
+              />
+              <Avatar.Fallback
+                className="leading-1 flex h-full w-full items-center justify-center bg-white text-[15px] font-medium"
+                delayMs={100}
+              >
+                @
+              </Avatar.Fallback>
+            </Avatar.Root>
+          )}
           <p
             style={{ color: theme.accent }}
             className="font-bold text-white text-center text-sm mt-4 mb-2 lg:text-xl lg:mt-4"
